@@ -1,0 +1,43 @@
+.modal-alert {
+    position: absolute;
+    color: white;
+    top: -100px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(0,0,0,.5);
+    padding: 15px;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease ;
+}
+.active-modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-container {
+    position: relative;
+}
+
+.modal-container h4 {
+    font-weight: 500;
+}
+
+
+.modal-container button {
+    position: absolute;
+    top: -38px;
+    right: -30px;
+    background: #000;
+    z-index: 50;
+    padding: 7px 10px 7px 10px;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    color: white;
+}
+
+.modal-container button .icon-modal {
+    background-color: white !important;
+}

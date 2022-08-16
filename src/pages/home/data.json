@@ -1,0 +1,43 @@
+{
+    "coord": {
+      "lon": 109.3333,
+      "lat": -0.0333
+    },
+    "weather": [
+      {
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 305.92,
+      "feels_like": 310.45,
+      "temp_min": 305.92,
+      "temp_max": 306.14,
+      "pressure": 1007,
+      "humidity": 55
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 5.14,
+      "deg": 180
+    },
+    "clouds": {
+      "all": 75
+    },
+    "dt": 1660632648,
+    "sys": {
+      "type": 2,
+      "id": 2021448,
+      "country": "ID",
+      "sunrise": 1660603427,
+      "sunset": 1660647034
+    },
+    "timezone": 25200,
+    "id": 1630789,
+    "name": "Pontianak",
+    "cod": 200
+  }
