@@ -25,7 +25,7 @@ export const List = () => {
   
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`)
     .then(res => {
-      setList(prev => [...prev, res.data])
+      setList(prev => [res.data, ...prev])
       setOpen(false)
     })
     .catch(e => {
@@ -46,39 +46,18 @@ export const List = () => {
             <p>Add new city</p>
         </div>
 
-        <div className='list-container'>
-            {
-                list?.map((res,i)=> (
-                <section key={i} className='main-weather'>
-                    <div className='title'>
-                        <p><span><BsCalendarEvent /></span>{' '}{date}</p>
-                        <h1>{toCelcius(res?.main?.temp)}<sup>&#176;C</sup></h1>
-                        <h3><span><GiPositionMarker/></span> {res?.name}, <span>{res?.sys?.country}</span></h3>  
-                    </div>  
-
-                    <div className='clouds'>
-                        <img className='icon' src={`http://openweathermap.org/img/wn/${res?.weather?.map(e => e.icon).join()}.png`} alt="icons" />
-                        <p>{res?.weather?.map(e => e.description).join()}</p>
-                    </div>
-
-                    <div className='information'>
-                        <div className='wind-speed'>
-                            <RiWindyLine className='icon-wind' />
-                            <p>{res?.wind?.speed} km/h</p>
-                        </div>
-                        <div className='humidity'>
-                            <WiHumidity className='icon-hum' />
-                            <p>{res?.main?.humidity} %</p>
-                        </div>
-                        <div className='max'>
-                            <FaTemperatureHigh className='icon-max' />
-                            <p>{toCelcius(res?.main?.temp_max)}<sup>&#176;C</sup></p>
-                        </div>
-                    </div>
-                </section>
-                ))
-            }
-        </div>
+        <section className='list-container'>
+          {
+            list?.map((res,i)=> (
+              <div key={i} className='weather-card'>
+                <div className='card-title'>
+                    <h1>{toCelcius(res?.main?.temp)}<sup>&#176;C</sup></h1>
+                    <h3><span><GiPositionMarker/></span> {res?.name}, <span>{res?.sys?.country}</span></h3>  
+                </div>  
+              </div>
+            ))
+          }
+        </section>
     </section>
   )
 }

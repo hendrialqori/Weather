@@ -1,13 +1,30 @@
 .main {
-    margin: 40px auto;
+    padding-top: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    transition: background .3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+
+.main .btn-theme {
+    padding: 10px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background: rgba(0,0,0,.4);
+    color: yellow;
+    cursor: pointer;
+}
+
+
 .main .container {
-    max-width: 768px;
-    width: 100%;
     color: white;
     padding: 10px;
     border-radius: 10px;
@@ -23,7 +40,7 @@
     padding: 20px;
     border-radius: 10px;
     background-color: rgba(0,0,0,.4);
-    width: max-content;
+    flex-grow: 1;
 }
 
 .main-weather form {
@@ -46,6 +63,11 @@ input::placeholder {
     margin-left: 6px;
     cursor: pointer;
 }
+
+.title {
+    margin-bottom: 10px;
+}
+
 .title h1 {
     margin-top: 5px;
 }
@@ -121,4 +143,10 @@ input::placeholder {
 
 .add-location .btn-add {
     padding: 5px;
+}
+
+@media (max-width:375px) {
+    .main-weather {
+        flex-grow: 1;
+    }
 }

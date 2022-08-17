@@ -1,10 +1,10 @@
 .modal-alert {
     position: absolute;
     color: white;
-    top: -100px;
-    left: 10px;
-    right: 10px;
-    background-color: rgba(0,0,0,.5);
+    top:15px;
+    left: 15px;
+    right: 30px;
+    background-color: #000;
     padding: 15px;
     border-radius: 10px;
     opacity: 0;

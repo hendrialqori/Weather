@@ -4,7 +4,7 @@ import { Modal } from '../../component/modal'
 import { List } from '../../component/list'
 import { BiSearch } from 'react-icons/bi'
 import { GiPositionMarker } from 'react-icons/gi'
-import { BsCalendarEvent } from 'react-icons/bs'
+import { BsCalendarEvent, BsFillCloudSunFill, BsCloudMoonFill } from 'react-icons/bs'
 import { RiWindyLine } from 'react-icons/ri'
 import { WiHumidity } from 'react-icons/wi'
 import { FaTemperatureHigh } from 'react-icons/fa'
@@ -13,10 +13,10 @@ import './home.css'
 
 export const Home = () => {
   const date = new Date().toDateString()
-
   const [city1, setCity1] = useState('')
   const [result1, setResult1] = useState({})
   const [open, setOpen] = useState(false)
+  const [night, setNight] = useState(false)
   const inputRef = useRef(null)
 
   const toCelcius = d => {
@@ -47,7 +47,16 @@ export const Home = () => {
   }, [])
 
   return (
-    <div className='main'>
+    <div style={{
+      background: night ? 'url(/night.jpg) no-repeat' : 'url(/light.jpg) no-repeat',
+      backgroundSize: !night && 'cover'
+    }} className='main'>
+        <button onClick={()=> setNight(prev => !prev)} className='btn-theme'>
+          {
+            night ? <BsFillCloudSunFill className='theme-icon' /> :
+            <BsCloudMoonFill className='theme-icon' />
+          }
+        </button>
         <main className='container'>
           {/* Modal */}
           <Modal open={open} setOpen={setOpen} city={city1}  />
@@ -60,18 +69,14 @@ export const Home = () => {
             </form>
 
             <div className='title'>
-              <p><span><BsCalendarEvent /></span>{' '}{date}</p>
+              <p><span><BsCalendarEvent />{' '}</span>{date}</p>
               <h1>{toCelcius(result1?.main?.temp)}<sup>&#176;C</sup></h1>
               <h3><span><GiPositionMarker/></span> {result1?.name}, <span>{result1?.sys?.country}</span></h3>  
             </div>  
-
-            {
-              !result1 ? <>.</> :
-              <div className='clouds'>
-                <img className='icon' src={`http://openweathermap.org/img/wn/${result1?.weather?.map(e => e.icon).join()}.png`} alt="icons" />
-                <p>{result1?.weather?.map(e => e.description).join()}</p>
-            </div>
-            }
+            
+            {/* <div className='clouds'>
+                <p>{result1?.weather?.map(e => e.main).join()}</p>
+            </div> */}
 
             <div className='information'>
               <div className='wind-speed'>
